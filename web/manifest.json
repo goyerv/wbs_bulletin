@@ -1,6 +1,6 @@
 {
-    "name": "goyerv_news_website",
-    "short_name": "goyerv_news_website",
+    "name": "Goyerv - News",
+    "short_name": "Goyerv - News",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

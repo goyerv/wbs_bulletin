@@ -30,17 +30,16 @@ class _GoyervNewsState extends State<GoyervNews> {
   late LocalesPreferencesImpl localesPreferences;
 
   @override 
-  Future<void> initState() async {
-    localesPreferences = LocalesPreferencesImpl(await SharedPreferences.getInstance());
+  void initState() {
+    // localesPreferences = LocalesPreferencesImpl(SharedPreferences.getInstance());
     // setState(() {theme = await themeData.getThemeData().then((value) => value.theme!);}); Either the one on top or this. Since this uses setState, the whole app will rebuild that i'm sure or, but for the one on top, not so sure.
-    localesPreferences = LocalesPreferencesImpl(await SharedPreferences.getInstance());
+    localesPreferences = LocalesPreferencesImpl(SharedPreferences.getInstance());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Goyerv',
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,

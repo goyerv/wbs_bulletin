@@ -9,7 +9,6 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../web_core/global_fields/fields.dart';
 import '../../../web_core/internationalization/app_localizations.dart';
 import '../../../widget/presentation/states/widget.dart';
 
@@ -27,7 +26,6 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
 
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,21 +38,12 @@ class _HomepageState extends State<Homepage> {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           color: Theme.of(context).primaryColor,
-          child: Column(
+          child: ListView(
             children: [
+
+
+              MediaQuery.of(context).size.width < 1100? SizedBox(height: MediaQuery.of(context).size.height * 0.6) : SizedBox(height: MediaQuery.of(context).size.height * 0.5),
       
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                child: Column(
-                  children: [
-
-                    sbhmax
-
-                  ]
-                ),
-              ),
-
-              sbhavg,
 
 
               //footer
