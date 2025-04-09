@@ -7,14 +7,18 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:go_router/go_router.dart';
 
+import 'homepage/presentation/categories/behind the scenes/why_goyerv_dose_not_use_warehouses.dart';
+import 'homepage/presentation/categories/economic impact & access/helping_underserved_communities.dart';
+import 'homepage/presentation/categories/sustainability & innovation/goyerv_is_green.dart';
+import 'homepage/presentation/categories/vision & philosophy/the_rise_of_peer_logistics.dart';
+import 'homepage/presentation/categories/vision & philosophy/we_are_a_movement.dart';
 import 'homepage/presentation/states/homepage_state.dart';
-import 'web_core/internationalization/app_localizations.dart';
-import 'web_core/internationalization/locales_preferences.dart';
 import 'web_core/themes/dark/theme_dark.dart';
 import 'web_core/themes/light/theme_light.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+
+
 
 class GoyervNews extends StatefulWidget {
 
@@ -27,127 +31,115 @@ class GoyervNews extends StatefulWidget {
 
 class _GoyervNewsState extends State<GoyervNews> {
 
-  late LocalesPreferencesImpl localesPreferences;
+  late final GoRouter router;
+  late GlobalKey<NavigatorState> navigatorKey;
+
 
   @override 
   void initState() {
-    // localesPreferences = LocalesPreferencesImpl(SharedPreferences.getInstance());
-    // setState(() {theme = await themeData.getThemeData().then((value) => value.theme!);}); Either the one on top or this. Since this uses setState, the whole app will rebuild that i'm sure or, but for the one on top, not so sure.
-    localesPreferences = LocalesPreferencesImpl(SharedPreferences.getInstance());
+    navigatorKey = GlobalKey<NavigatorState>();
+    initializeRouter();
     super.initState();
   }
 
+
+
+
+  void initializeRouter() {
+    router = GoRouter(
+      initialLocation: '/',
+      navigatorKey: navigatorKey,
+      redirect: (context, state) {
+        final path = state.uri.path;
+
+        if (path.endsWith('.html')) {
+          final newPath = path.replaceAll('.html', '');
+          return newPath;
+        }
+
+        return null;
+      },
+      routes: [
+    
+        GoRoute(
+          path: '/',
+          builder: (context, state) => const Homepage()
+        ),
+  
+        // Push Notifications
+        GoRoute(
+          path: '/2025/behind-the-scenes/:path',
+          builder: (context, state) {
+            if(state.pathParameters['path'] == "why-goyerv-does-not-use-warehouses") {
+              return const WhyGoyervDoesNotUseWarehouses();
+            }
+
+            return const Homepage();
+          }
+        ),
+      
+  
+        GoRoute(
+          path: '/2025/economic-impact-and-access/:path',
+          builder: (context, state) {
+            if(state.pathParameters['path'] == "helping-underserved-communities") {
+              return const HelpingUnderServedCommunities();
+            }
+
+            return const Homepage();
+          }
+        ),
+    
+      
+        GoRoute(
+          path: '/2025/sustainability-and-innovation/:path',
+          builder: (context, state) {
+            if(state.pathParameters['path'] == "goyerv-is-green") {
+              return const GoyervIsGreen();
+            }
+
+            return const Homepage();
+          }
+        ),
+      
+        GoRoute(
+          path: '2025/vision-and-philosophy/:path',
+          builder: (context, state) {
+            if(state.pathParameters['path'] == "the-rise-of-peer-logistics") {
+              return const TheRiseOfPeerLogistics();
+            }
+
+            return const Homepage();
+          }
+        ),
+      
+        GoRoute(
+          path: '/2025/vision-and-philosophy/:path',
+          builder: (context, state) {
+            if(state.pathParameters['path'] == "we-are-a-movement") {
+              return const WeAreAMovement();
+            }
+
+            return const Homepage();
+          }
+        ),
+      
+    
+      ]
+    );
+  
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: router,
+      title: 'Goyerv',
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
-      locale: Locale('${localesPreferences.getPlatformLocale().then((value) => value.first)}', '${localesPreferences.getPlatformLocale().then((value) => value.elementAt(1) == ''? null : value.elementAt(1))}'),
-      supportedLocales: const [
-        Locale('en', 'US'),
-        Locale('ar', null),
-        Locale('bn', null),
-        Locale('bg', null),
-        Locale('my', null),
-        Locale('ceb', null),
-        Locale('zh', 'CN'),
-        Locale('zh', 'TW'),
-        Locale('hr', null),
-        Locale('cs', null),
-        Locale('da', null),
-        Locale('nl', null),
-        Locale('en', 'AU'),
-        Locale('en', 'BZ'),
-        Locale('en', 'CA'),
-        Locale('en', 'CB'),
-        Locale('en', 'GB'),
-        Locale('en', 'IN'),
-        Locale('en', 'IE'),
-        Locale('en', 'JM'),
-        Locale('en', 'NZ'),
-        Locale('en', 'PH'),
-        Locale('en', 'ZA'),
-        Locale('en', 'TT'),
-        Locale('et', null),
-        Locale('fil', null),
-        Locale('fi', null),
-        Locale('fr', 'BE'),
-        Locale('fr', 'FR'),
-        Locale('fr', 'LU'),
-        Locale('fr', 'CH'),
-        Locale('ka', null),
-        Locale('de', 'AT'),
-        Locale('de', 'DE'),
-        Locale('de', 'LI'),
-        Locale('de', 'LU'),
-        Locale('de', 'CH'),
-        Locale('el', null),
-        Locale('gu', null),
-        Locale('ha', 'NG'),
-        Locale('hi', null),
-        Locale('hu', null),
-        Locale('ig', 'NG'),
-        Locale('id', null),
-        Locale('it', 'IT'),
-        Locale('it', 'CH'),
-        Locale('ja', null),
-        Locale('kn', null),
-        Locale('km', null),
-        Locale('ko', null),
-        Locale('ms', 'MY'),
-        Locale('ml', null),
-        Locale('mr'),
-        Locale('nb', 'NO'),
-        Locale('nn', 'NO'),
-        Locale('or', null),
-        Locale('pl', null),
-        Locale('pt', 'BR'),
-        Locale('pt', 'PT'),
-        Locale('pa', null),
-        Locale('ro', 'MO'),
-        Locale('ru', 'MO'),
-        Locale('es', 'AR'),
-        Locale('es', 'BO'),
-        Locale('es', 'CI'),
-        Locale('es', 'CO'),
-        Locale('es', 'CR'),
-        Locale('es', 'DO'),
-        Locale('es', 'EC'),
-        Locale('es', 'SV'),
-        Locale('es', 'GT'),
-        Locale('es', 'HN'),
-        Locale('es', 'MX'),
-        Locale('es', 'NI'),
-        Locale('es', 'PA'),
-        Locale('es', 'PY'),
-        Locale('es', 'PE'),
-        Locale('es', 'PR'),
-        Locale('es', 'ES'),
-        Locale('es', 'UY'),
-        Locale('es', 'VE'),
-        Locale('ta', null),
-        Locale('th', null),
-        Locale('tr', null),
-        Locale('uk', null),
-        Locale('vi', null),
-        Locale('cy', null),
-        Locale('yr', 'NG')
-      ],
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      localeResolutionCallback: (locale, supportedLocales) {
-        for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale!.languageCode && supportedLocale.countryCode == locale.countryCode)  {
-            return supportedLocale;
-          }
-        }
-        return supportedLocales.first;
-      },
-      home: const Homepage(),
     );
   }
 

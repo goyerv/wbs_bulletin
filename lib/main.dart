@@ -14,6 +14,6 @@ import 'index.dart';
 
 void main() async { 
   WidgetsFlutterBinding.ensureInitialized();
-  usePathUrlStrategy();
+  setUrlStrategy(const PathUrlStrategy());
   runApp(const GoyervNews());
 }  
