@@ -35,7 +35,7 @@ class _WeAreAMovementState extends State<WeAreAMovement> {
       appBar: appBar(context),
 
       body: Title(
-        title: "Goyerv - We’re Not a Delivery App—We’re a Movement",
+        title: "Goyerv Bulletin - We’re Not a Delivery App—We’re a Movement",
         color: Theme.of(context).primaryColor,
         child: Container(
           width: MediaQuery.of(context).size.width,

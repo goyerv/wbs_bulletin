@@ -35,7 +35,7 @@ class _GoyervIsGreenState extends State<GoyervIsGreen> {
       appBar: appBar(context),
 
       body: Title(
-        title: "Goyerv - Goyerv is Green",
+        title: "Goyerv Bulletin - Goyerv is Green",
         color: Theme.of(context).primaryColor,
         child: Container(
           width: MediaQuery.of(context).size.width,

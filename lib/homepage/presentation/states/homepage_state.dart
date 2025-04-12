@@ -76,7 +76,7 @@ class _HomepageState extends State<Homepage> {
                           
                                 Expanded(
                                   flex: 74,
-                                  child: Image.network("https://www.goyerv.com/assets/bulletin/goyerv-green-logo.png", fit: BoxFit.cover, width: double.infinity)
+                                  child: Image.network("https://bulletin.goyerv.com/2025/goyerv-green-logo.png", fit: BoxFit.cover, width: double.infinity)
                                 ),
                           
                           
@@ -106,8 +106,9 @@ class _HomepageState extends State<Homepage> {
                           
                                 Expanded(
                                   flex: 72,
-                                  child: Image.network("https://unsplash.com/photos/yellow-and-white-plastic-box-lot-sczNLg6rrhQ", fit: BoxFit.cover, width: double.infinity)
+                                  child: Image.network("https://bulletin.goyerv.com/2025/adrian-sulyok-sczNLg6rrhQ-unsplash.jpg", fit: BoxFit.cover, width: double.infinity)
                                 ),
+                                
                           
                           
                                 Expanded(
@@ -137,7 +138,7 @@ class _HomepageState extends State<Homepage> {
                           
                                 Expanded(
                                   flex: 68,
-                                  child: Image.network("https://www.goyerv.com/assets/bulletin/market_at_night.png", fit: BoxFit.cover, width: double.infinity)
+                                  child: Image.network("https://bulletin.goyerv.com/2025/1744207951194.jpg", fit: BoxFit.cover, width: double.infinity)
                                 ),
                           
                           
@@ -166,7 +167,7 @@ class _HomepageState extends State<Homepage> {
                           
                                 Expanded(
                                   flex: 68,
-                                  child: Image.network("https://pin.it/3rr0W1ZJz", fit: BoxFit.cover, width: double.infinity)
+                                  child: Image.network("https://bulletin.goyerv.com/2025/Camara 360.jpg", fit: BoxFit.cover, width: double.infinity)
                                 ),
                           
                           
@@ -196,7 +197,7 @@ class _HomepageState extends State<Homepage> {
                           
                                 Expanded(
                                   flex: 68,
-                                  child: Image.network("https://pin.it/D7kC3SVhs", fit: BoxFit.cover, width: double.infinity)
+                                  child: Image.network("https://bulletin.goyerv.com/2025/Download Business idea, transfer, transportation for free.jpg", fit: BoxFit.cover, width: double.infinity)
                                 ),
                           
                                 Expanded(

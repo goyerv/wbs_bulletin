@@ -34,7 +34,7 @@ class _WhyGoyervDoesNotUseWarehousesState extends State<WhyGoyervDoesNotUseWareh
     return Scaffold(
       appBar: appBar(context),
       body: Title(
-        title: "Goyerv - Why Goyerv Doesn’t Use Warehouses",
+        title: "Goyerv Bulletin - Why Goyerv Doesn’t Use Warehouses",
         color: Theme.of(context).primaryColor,
         child: Container(
           width: MediaQuery.of(context).size.width,
