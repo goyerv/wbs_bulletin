@@ -1,5 +1,5 @@
-name: goyerv_news_website
-description: A new Flutter project.
+name: goyerv_bulletin_website
+description: Updates, announcements, news, stuffs like that we think you'd like to know as it relates to Goyerv.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.

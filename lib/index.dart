@@ -20,16 +20,16 @@ import 'web_core/themes/light/theme_light.dart';
 
 
 
-class GoyervNews extends StatefulWidget {
+class GoyervBulletin extends StatefulWidget {
 
-  const GoyervNews({Key? key}) : super(key: key);
+  const GoyervBulletin({Key? key}) : super(key: key);
 
   @override
-  State<GoyervNews> createState() => _GoyervNewsState();
+  State<GoyervBulletin> createState() => _GoyervBulletinState();
 
 }
 
-class _GoyervNewsState extends State<GoyervNews> {
+class _GoyervBulletinState extends State<GoyervBulletin> {
 
   late final GoRouter router;
   late GlobalKey<NavigatorState> navigatorKey;
@@ -66,7 +66,6 @@ class _GoyervNewsState extends State<GoyervNews> {
           builder: (context, state) => const Homepage()
         ),
   
-        // Push Notifications
         GoRoute(
           path: '/2025/behind-the-scenes/:path',
           builder: (context, state) {
@@ -103,7 +102,7 @@ class _GoyervNewsState extends State<GoyervNews> {
         ),
       
         GoRoute(
-          path: '2025/vision-and-philosophy/:path',
+          path: '/2025/vision-and-philosophy/:path',
           builder: (context, state) {
             if(state.pathParameters['path'] == "the-rise-of-peer-logistics") {
               return const TheRiseOfPeerLogistics();

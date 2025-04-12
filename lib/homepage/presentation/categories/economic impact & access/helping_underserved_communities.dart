@@ -35,7 +35,7 @@ class _HelpingUnderServedCommunitiesState extends State<HelpingUnderServedCommun
       appBar: appBar(context),
 
       body: Title(
-        title: "Goyerv - Goyerv as a Lifeline: Helping Underserved Communities Trade and Thrive",
+        title: "Goyerv Bulletin - Goyerv as a Lifeline: Helping Underserved Communities Trade and Thrive",
         color: Theme.of(context).primaryColor,
         child: Container(
           width: MediaQuery.of(context).size.width,

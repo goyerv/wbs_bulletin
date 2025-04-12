@@ -34,7 +34,7 @@ class _TheRiseOfPeerLogisticsState extends State<TheRiseOfPeerLogistics> {
     return Scaffold(
       appBar: appBar(context),
       body: Title(
-        title: "Goyerv - From Uber to Airbnb to Goyerv: The Rise of Peer-Logistics",
+        title: "Goyerv Bulletin - From Uber to Airbnb to Goyerv: The Rise of Peer-Logistics",
         color: Theme.of(context).primaryColor,
         child: Container(
           width: MediaQuery.of(context).size.width,
