@@ -132,16 +132,12 @@ Footer footer(BuildContext context) {
             runSpacing: 16,
             direction: screenWidth > 600 ? Axis.horizontal : Axis.vertical,
             children: [
-              TextButton(onPressed: () => launchUrl(uriTerms), focusNode: focusNodeOne, child: Text('Terms', style: Theme.of(context).textTheme.labelSmall),),
 
-              TextButton(onPressed: () => launchUrl(uriPrivacy), focusNode: focusNodeTwo, child: Text('Privacy', style: Theme.of(context).textTheme.labelSmall),),
-
-              TextButton(onPressed: () => launchUrl(uriSupport), focusNode: focusNodeThree, child: Text('Support', style: Theme.of(context).textTheme.labelSmall),),
-
-              TextButton(onPressed: () => launchUrl(uriResources), focusNode: focusNodeFour, child: Text('Resources', style: Theme.of(context).textTheme.labelSmall),),
-
-              TextButton(onPressed: () => launchUrl(uriCareers), focusNode: focusNodeFive, child: Text('Careers', style: Theme.of(context).textTheme.labelSmall),),
-
+              OnHover(builder: (isHovered, context) => TextButton(onPressed: () => launchUrl(uriTerms), focusNode: focusNodeOne, child: Text('Terms', style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: isHovered? defaultColor : Theme.of(context).textTheme.bodyLarge!.color)))),
+              OnHover(builder: (isHovered, context) => TextButton(onPressed: () => launchUrl(uriPrivacy), focusNode: focusNodeTwo, child: Text('Privacy', style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: isHovered? defaultColor : Theme.of(context).textTheme.bodyLarge!.color)))),
+              OnHover(builder: (isHovered, context) => TextButton(onPressed: () => launchUrl(uriSupport), focusNode: focusNodeThree, child: Text('Support', style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: isHovered? defaultColor : Theme.of(context).textTheme.bodyLarge!.color)))),
+              OnHover(builder: (isHovered, context) => TextButton(onPressed: () => launchUrl(uriResources), focusNode: focusNodeFour, child: Text('Resources', style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: isHovered? defaultColor : Theme.of(context).textTheme.bodyLarge!.color)))),
+              OnHover(builder: (isHovered, context) => TextButton(onPressed: () => launchUrl(uriCareers), focusNode: focusNodeFive, child: Text('Careers', style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: isHovered? defaultColor : Theme.of(context).textTheme.bodyLarge!.color)))),
 
             ],
           ),
