@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="flutter_bootstrap.js" async></script>
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
@@ -20,10 +21,10 @@
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Stay updated with the latest happenings within and outside the Goyerv community. From new laws and policies by governments around the world to helpful tips from us, we've got you covered.">
 
-    <!-- Facebook -->
+  <!-- Facebook -->
 	<meta property="og:title" content="Goyerv - Bulletin"/>
 	<meta property="og:description" content="Stay updated with the latest happenings within and outside the Goyerv community. From new laws and policies by governments around the world to helpful tips from us, we've got you covered.">
-	<meta property="og:url" content="https://news.goyerv.com"/>
+	<meta property="og:url" content="https://bulletin.goyerv.com"/>
 	<meta property="og:image" content="https://www.goyerv.com/seo/image/logo.png"/>
 	<meta property="og:type" content="website"/>
 	<meta property="og:site_name" content="Goyerv - Bulletin"/>
@@ -31,7 +32,7 @@
   <meta property="og: image:height" content="512" />
 
   <!-- X -->
-  <meta name="twitter:url" content="https://news.goyerv.com">
+  <meta name="twitter:url" content="https://bulletin.goyerv.com">
   <meta name="twitter:title" content="Goyerv - Bulletin">
   <meta name="twitter:description" content="Stay updated with the latest happenings within and outside the Goyerv community. From new laws and policies by governments around the world to helpful tips from us, we've got you covered.">
   <meta name="twitter:image" content="https://www.goyerv.com/seo/image/logo.png">
@@ -48,33 +49,48 @@
   <meta name="apple-mobile-web-app-title" content="Goyerv - Bulletin">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Goyerv - Bulletin",
+      "description": "Stay updated with the latest happenings within and outside the Goyerv community. From new laws and policies by governments around the world to helpful tips from us, we've got you covered.",
+      "url": "https://bulletin.goyerv.com",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Goyerv",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.goyerv.com/seo/image/logo.png"
+        }
+      }
+    }
+  </script>
+
+  <!-- Minimal static text for crawlers -->
+  <style>
+    #preload-seo { display: block; position: absolute; top: -9999px; left: -9999px; }
+  </style>
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
   <title>Goyerv - Bulletin</title>
-  <link rel="manifest" href="manifest.json">
-
-  <script>
-    // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = null;
-  </script>
-  <!-- This script adds the flutter initialization JS code -->
-  <script src="flutter.js" defer></script>
 </head>
 <body>
+  <div id="preload-seo">
+    <h1>Goyerv - Bulletin</h1>
+    <p>
+      Stay updated with the latest happenings within and outside the Goyerv community. From new laws and policies by governments around the world to helpful tips from us, we've got you covered.
+    </p>
+  </div>
+  <!-- Remove SEO content just before Flutter loads -->
   <script>
-    window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        }
-      }).then(function(engineInitializer) {
-        return engineInitializer.initializeEngine();
-      }).then(function(appRunner) {
-        return appRunner.runApp();
-      });
-    });
+    setTimeout(() => {
+      const seo = document.getElementById('preload-seo');
+      if (seo) seo.remove();
+    }, 2000);
   </script>
 </body>
 </html>
