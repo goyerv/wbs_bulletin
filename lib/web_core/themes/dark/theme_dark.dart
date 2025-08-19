@@ -1,6 +1,5 @@
-// Copyright (c) 2022 Goyerv Ltd. All rights reserved.
+// Copyright (c) 2023 Goyerv Ltd. All rights reserved.
 // Author: Emmanuel Okorafor
-
 
 
 
@@ -52,7 +51,7 @@ ThemeData darkTheme = ThemeData(
   ),  
   cardColor: black..withOpacity(0.8),
   canvasColor: monaiki,
-  cardTheme: CardTheme(
+  cardTheme: CardThemeData(
     color: black,
     elevation: 0.0,
     shadowColor: white..withOpacity(0.5),
@@ -76,7 +75,7 @@ ThemeData darkTheme = ThemeData(
     thickness: 10.0,
   ),
   dialogBackgroundColor: black,
-  dialogTheme: DialogTheme(
+  dialogTheme: DialogThemeData(
     backgroundColor: black,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10.0),
@@ -226,10 +225,10 @@ ThemeData darkTheme = ThemeData(
     ),
     contentTextStyle: bodyLarge,
   ),
-  tabBarTheme: TabBarTheme(
+  tabBarTheme: TabBarThemeData(
     indicator: const UnderlineTabIndicator(
       borderRadius: BorderRadius.only(topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0)),
-      borderSide: BorderSide(width: 5.0, color: defaultColor),
+      borderSide: BorderSide(width: 5.0, color: Color.fromRGBO(126, 55, 4, 0.965)),
       insets: EdgeInsets.symmetric(horizontal: 16.0)
     ),
     indicatorSize: TabBarIndicatorSize.tab,

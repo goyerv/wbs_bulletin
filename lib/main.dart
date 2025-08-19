@@ -8,12 +8,12 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'index.dart'; 
 
 
 void main() async { 
   WidgetsFlutterBinding.ensureInitialized();
-  setUrlStrategy(const PathUrlStrategy());
+  setUrlStrategy(PathUrlStrategy());
   runApp(const GoyervBulletin());
 }  

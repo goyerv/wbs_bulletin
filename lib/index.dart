@@ -31,34 +31,12 @@ class GoyervBulletin extends StatefulWidget {
 
 class _GoyervBulletinState extends State<GoyervBulletin> {
 
-  late final GoRouter router;
-  late GlobalKey<NavigatorState> navigatorKey;
 
-
-  @override 
-  void initState() {
-    navigatorKey = GlobalKey<NavigatorState>();
-    initializeRouter();
-    super.initState();
-  }
-
-
-
-
-  void initializeRouter() {
-    router = GoRouter(
+  @override
+  Widget build(BuildContext context) {
+    
+      final GoRouter router = GoRouter(
       initialLocation: '/',
-      navigatorKey: navigatorKey,
-      redirect: (context, state) {
-        final path = state.uri.path;
-
-        if (path.endsWith('.html')) {
-          final newPath = path.replaceAll('.html', '');
-          return newPath;
-        }
-
-        return null;
-      },
       routes: [
     
         GoRoute(
@@ -100,42 +78,29 @@ class _GoyervBulletinState extends State<GoyervBulletin> {
             return const Homepage();
           }
         ),
-      
+              
         GoRoute(
           path: '/2025/vision-and-philosophy/:path',
           builder: (context, state) {
-            if(state.pathParameters['path'] == "the-rise-of-peer-logistics") {
-              return const TheRiseOfPeerLogistics();
+            final path = state.pathParameters['path'];
+        
+            switch (path) {
+              case "the-rise-of-peer-logistics":
+                return const TheRiseOfPeerLogistics();
+              case "we-are-a-movement":
+                return const WeAreAMovement();
+              default:
+                return const Homepage();
             }
-
-            return const Homepage();
-          }
-        ),
-      
-        GoRoute(
-          path: '/2025/vision-and-philosophy/:path',
-          builder: (context, state) {
-            if(state.pathParameters['path'] == "we-are-a-movement") {
-              return const WeAreAMovement();
-            }
-
-            return const Homepage();
-          }
+          },
         ),
       
     
       ]
     );
-  
-  }
 
-
-
-  @override
-  Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: router,
-      title: 'Goyerv',
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: ThemeMode.system,
