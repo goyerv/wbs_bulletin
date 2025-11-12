@@ -13,7 +13,7 @@ import 'index.dart';
 
 
 void main() async { 
+  usePathUrlStrategy();
   WidgetsFlutterBinding.ensureInitialized();
-  setUrlStrategy(PathUrlStrategy());
   runApp(const GoyervBulletin());
 }  
