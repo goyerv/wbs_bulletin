@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:footer/footer_view.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../web_core/global_fields/fields.dart';
 import '../../../widget/presentation/states/widget.dart';
 
 
@@ -24,6 +25,7 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  
   // Define category colors for that pill pop
   final Map<String, Color> categoryColors = {
     'Sustainability & Innovation': Colors.green,
@@ -37,47 +39,47 @@ class _HomepageState extends State<Homepage> {
     {
       'category': 'Sustainability & Innovation',
       'title': 'Goyerv is Green',
-      'image': 'https://bulletin.goyerv.com/2025/goyerv-green-logo.png',
+      'image': 'https://bulletin.goyerv.com/articles/goyerv-green-logo.png',
       'teaser': 'Discover how Goyerv is leading the charge in eco-friendly logistics and sustainability.',
-      'date': 'Aug 15, 2025',
+      'date': 'August 15, 2025',
       'readTime': '4 min read',
-      'route': '/2025/sustainability-and-innovation/goyerv-is-green',
+      'route': '/articles/sustainability-and-innovation/goyerv-is-green',
     },
     {
       'category': 'Behind the Scenes',
       'title': 'Why Goyerv Doesn’t Use Warehouses',
-      'image': 'https://bulletin.goyerv.com/2025/adrian-sulyok-sczNLg6rrhQ-unsplash.jpg',
+      'image': 'https://bulletin.goyerv.com/articles/adrian-sulyok-sczNLg6rrhQ-unsplash.jpg',
       'teaser': 'Peek behind the curtain at our innovative peer-to-peer model that skips the storage drama.',
       'date': 'July 14, 2025',
       'readTime': '2 min read',
-      'route': '/2025/behind-the-scenes/why-goyerv-does-not-use-warehouses',
+      'route': '/articles/behind-the-scenes/why-goyerv-does-not-use-warehouses',
     },
     {
       'category': 'Economic Impact & Access',
       'title': 'Goyerv as a Lifeline: Helping Underserved Communities Trade and Thrive',
-      'image': 'https://bulletin.goyerv.com/2025/1744207951194.jpg',
+      'image': 'https://bulletin.goyerv.com/articles/1744207951194.jpg',
       'teaser': 'See how we\'re empowering communities with accessible trading and economic boosts.',
       'date': 'May 26, 2025',
       'readTime': '2 min read',
-      'route': '/2025/economic-impact-and-access/helping-underserved-communities',
+      'route': '/articles/economic-impact-and-access/helping-underserved-communities',
     },
     {
       'category': 'Vision & Philosophy',
       'title': 'From Uber to Airbnb to Goyerv: The Rise of Peer-Logistics',
-      'image': 'https://bulletin.goyerv.com/2025/Camara-360.jpg',
+      'image': 'https://bulletin.goyerv.com/articles/Camara-360.jpg',
       'teaser': 'Explore the evolution of sharing economies and how Goyerv fits into the big picture.',
       'date': 'May 12, 2025',
       'readTime': '4 min read',
-      'route': '/2025/vision-and-philosophy/the-rise-of-peer-logistics',
+      'route': '/articles/vision-and-philosophy/the-rise-of-peer-logistics',
     },
     {
       'category': 'Vision & Philosophy',
       'title': 'We’re Not a Delivery App—We’re a Movement',
-      'image': 'https://bulletin.goyerv.com/2025/Download-Business-idea-transfer-transportation-for-free.jpg',
+      'image': 'https://bulletin.goyerv.com/articles/Download-Business-idea-transfer-transportation-for-free.jpg',
       'teaser': 'Join the revolution: Goyerv is redefining logistics as a community-driven force.',
       'date': 'April 11, 2025',
       'readTime': '3 min read',
-      'route': '/2025/vision-and-philosophy/we-are-a-movement',
+      'route': '/articles/vision-and-philosophy/we-are-a-movement',
     },
   ];
 
@@ -114,11 +116,14 @@ class _HomepageState extends State<Homepage> {
             footer: footer(context),
             flex: 8,
             children: [
+
+              sbhmax, sbhmax,
+              
               Padding(
                 padding: EdgeInsets.all(padding),
                 child: GridView.count(
                   shrinkWrap: true, // To fit inside the column
-                  physics: NeverScrollableScrollPhysics(), // No scroll, let parent handle
+                  physics: const NeverScrollableScrollPhysics(), // No scroll, let parent handle
                   crossAxisCount: crossAxisCount,
                   crossAxisSpacing: gridSpacing,
                   mainAxisSpacing: gridSpacing,
@@ -127,7 +132,7 @@ class _HomepageState extends State<Homepage> {
                     return MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
-                        onTap: () => context.push(post['route']),
+                        onTap: () => context.go(post['route']),
                         child: Card(
                           elevation: 2, // Slight glow-up shadow
                           shadowColor: Colors.grey.withOpacity(0.5),
@@ -142,12 +147,12 @@ class _HomepageState extends State<Homepage> {
                               // Image, cropped to fit
                               if (post['image'] != null)
                                 ClipRRect(
-                                  borderRadius: const BorderRadius.vertical(top: Radius.circular(0)), // Blend with card
+                                  borderRadius: const BorderRadius.vertical(top: Radius.circular(15.0)), // Blend with card
                                   child: Image.network(
                                     post['image'],
                                     fit: BoxFit.cover,
                                     width: double.infinity,
-                                    height: screenWidth * 0.15, // Adjusted for better proportion
+                                    height: screenWidth > 800 ? screenWidth * 0.15 : screenWidth * 0.75, // Adjusted for better proportion
                                   ),
                                 ),
 
@@ -158,11 +163,11 @@ class _HomepageState extends State<Homepage> {
                                 child: Chip(
                                   label: Text(
                                     post['category'],
-                                    style: TextStyle(color: Colors.white, fontSize: 12),
+                                    style: const TextStyle(color: Colors.white, fontSize: 12),
                                   ),
                                   backgroundColor: categoryColors[post['category']] ?? Colors.grey,
-                                  shape: StadiumBorder(),
-                                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                  shape: const StadiumBorder(),
+                                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                                 ),
                               ),
                               
@@ -188,17 +193,20 @@ class _HomepageState extends State<Homepage> {
                                   overflow: TextOverflow.ellipsis,
                                 ),
                               ),
+
                               // Date and read time with calendar icon
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.calendar_today_outlined, size: 14, color: Colors.grey),
-                                    SizedBox(width: 4),
+                                    const Icon(Icons.calendar_today_outlined, size: 14, color: Colors.grey),
+                                    
+                                    const SizedBox(width: 4),
                                     Text(
                                       '${post['date']} • ${post['readTime']}',
-                                      style: TextStyle(color: Colors.grey, fontSize: 12),
+                                      style: const TextStyle(color: Colors.grey, fontSize: 12),
                                     ),
+
                                   ],
                                 ),
                               ),

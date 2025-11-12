@@ -6,14 +6,15 @@
 
 
 
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'homepage/presentation/categories/behind the scenes/why_goyerv_dose_not_use_warehouses.dart';
-import 'homepage/presentation/categories/economic impact & access/helping_underserved_communities.dart';
-import 'homepage/presentation/categories/sustainability & innovation/goyerv_is_green.dart';
-import 'homepage/presentation/categories/vision & philosophy/the_rise_of_peer_logistics.dart';
-import 'homepage/presentation/categories/vision & philosophy/we_are_a_movement.dart';
+import 'homepage/presentation/categories/behind-the-scenes/why_goyerv_dose_not_use_warehouses.dart';
+import 'homepage/presentation/categories/economic-impact-and-access/helping_underserved_communities.dart' show HelpingUnderServedCommunities;
+import 'homepage/presentation/categories/sustainability-and-innovation/goyerv_is_green.dart';
+import 'homepage/presentation/categories/vision-philosophy/the_rise_of_peer_logistics.dart';
+import 'homepage/presentation/categories/vision-philosophy/we_are_a_movement.dart';
 import 'homepage/presentation/states/homepage_state.dart';
 import 'web_core/themes/dark/theme_dark.dart';
 import 'web_core/themes/light/theme_light.dart';
@@ -45,7 +46,7 @@ class _GoyervBulletinState extends State<GoyervBulletin> {
         ),
   
         GoRoute(
-          path: '/2025/behind-the-scenes/:path',
+          path: '/articles/behind-the-scenes/:path',
           builder: (context, state) {
             if(state.pathParameters['path'] == "why-goyerv-does-not-use-warehouses") {
               return const WhyGoyervDoesNotUseWarehouses();
@@ -57,7 +58,7 @@ class _GoyervBulletinState extends State<GoyervBulletin> {
       
   
         GoRoute(
-          path: '/2025/economic-impact-and-access/:path',
+          path: '/articles/economic-impact-and-access/:path',
           builder: (context, state) {
             if(state.pathParameters['path'] == "helping-underserved-communities") {
               return const HelpingUnderServedCommunities();
@@ -69,7 +70,7 @@ class _GoyervBulletinState extends State<GoyervBulletin> {
     
       
         GoRoute(
-          path: '/2025/sustainability-and-innovation/:path',
+          path: '/articles/sustainability-and-innovation/:path',
           builder: (context, state) {
             if(state.pathParameters['path'] == "goyerv-is-green") {
               return const GoyervIsGreen();
@@ -80,7 +81,7 @@ class _GoyervBulletinState extends State<GoyervBulletin> {
         ),
               
         GoRoute(
-          path: '/2025/vision-and-philosophy/:path',
+          path: '/articles/vision-and-philosophy/:path',
           builder: (context, state) {
             final path = state.pathParameters['path'];
         
