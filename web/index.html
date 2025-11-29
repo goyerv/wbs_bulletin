@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="flutter_bootstrap.js" async></script>
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
@@ -16,6 +15,7 @@
     the `--base-href` argument provided to `flutter build`.
   -->
   <base href="$FLUTTER_BASE_HREF">
+  <script src="flutter_bootstrap.js" async></script>
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
@@ -37,17 +37,13 @@
   <meta name="twitter:description" content="Stay updated with the latest happenings within and outside the Goyerv community. From new laws and policies by governments around the world to helpful tips from us, we've got you covered.">
   <meta name="twitter:image" content="https://www.goyerv.com/seo/image/logo.png">
 
-  <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Goyerv - Bulletin">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <meta name="mobile-web-app-capable" content="no">
+  <meta name="mobile-web-app-status-bar-style" content="black">
+  <meta name="mobile-web-app-title" content="Goyerv - Bulletin">
 
   <!-- iOS meta tags & icons -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Goyerv - Bulletin">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
 
   <!-- Schema.org -->
   <script type="application/ld+json">
@@ -79,7 +75,7 @@
   <title>Goyerv - Bulletin</title>
 </head>
 <body>
-  <div id="preload-seo">
+  <div id="preload-seo" style="color:white; font-family: Inter, sans-serif; line-height: 1.6;">
     <h1>Goyerv - Bulletin</h1>
     <p>
       Stay updated with the latest happenings within and outside the Goyerv community. From new laws and policies by governments around the world to helpful tips from us, we've got you covered.
@@ -89,7 +85,7 @@
     setTimeout(() => {
       const seo = document.getElementById('preload-seo');
       if (seo) seo.remove();
-    }, 2000);
+    }, 4000);
   </script>
 </body>
 </html>

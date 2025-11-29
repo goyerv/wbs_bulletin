@@ -85,24 +85,6 @@ class _HomepageState extends State<Homepage> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    int crossAxisCount = screenWidth > 1200 ? 3 : screenWidth > 800 ? 2 : 1;
-    double padding = screenWidth >= 800 ? 50.0 : 16.0;
-    const gridSpacing = 30.0;
-    
-    // estimate a comfy card height per breakpoint
-    final cardHeight = screenWidth > 1200
-        ? 360.0
-        : screenWidth > 800
-            ? 340.0
-            : 300.0;
-    
-    // compute card width and aspect ratio (width / height)
-    final gridWidth = screenWidth - (padding * 2);
-    final cardWidth =
-        (gridWidth - (gridSpacing * (crossAxisCount - 1))) / crossAxisCount;
-    final childAspectRatio = cardWidth / cardHeight;
-
 
     return Scaffold(
       appBar: appBar(context),
@@ -120,97 +102,83 @@ class _HomepageState extends State<Homepage> {
               sbhmax, sbhmax,
               
               Padding(
-                padding: EdgeInsets.all(padding),
-                child: GridView.count(
-                  shrinkWrap: true, // To fit inside the column
-                  physics: const NeverScrollableScrollPhysics(), // No scroll, let parent handle
-                  crossAxisCount: crossAxisCount,
-                  crossAxisSpacing: gridSpacing,
-                  mainAxisSpacing: gridSpacing,
-                  childAspectRatio: childAspectRatio,
+                padding: EdgeInsets.all(MediaQuery.of(context).size.width >= 800? 50.0 : 16.0),
+                child: Wrap(
+                  spacing: 20.0,
+                  runSpacing: 30.0,
+                  // alignment: WrapAlignment.start,
                   children: posts.map((post) {
                     return MouseRegion(
                       cursor: SystemMouseCursors.click,
                       child: GestureDetector(
                         onTap: () => context.go(post['route']),
                         child: Card(
-                          elevation: 2, // Slight glow-up shadow
+                          elevation: 2, 
                           shadowColor: Colors.grey.withOpacity(0.5),
                           shape: RoundedRectangleBorder(
                             side: const BorderSide(color: Colors.grey, width: 0.5),
-                            borderRadius: BorderRadius.circular(12.0), // Softer corners
+                            borderRadius: BorderRadius.circular(12.0),
                           ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-
-                              // Image, cropped to fit
-                              if (post['image'] != null)
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.vertical(top: Radius.circular(15.0)), // Blend with card
-                                  child: Image.network(
-                                    post['image'],
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
-                                    height: screenWidth > 800 ? screenWidth * 0.15 : screenWidth * 0.75, // Adjusted for better proportion
-                                  ),
-                                ),
-
-
-                              // Category pill
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
-                                child: Chip(
-                                  label: Text(
-                                    post['category'],
-                                    style: const TextStyle(color: Colors.white, fontSize: 12),
-                                  ),
-                                  backgroundColor: categoryColors[post['category']] ?? Colors.grey,
-                                  shape: const StadiumBorder(),
-                                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                ),
-                              ),
-                              
-                                                              
-                              // Title
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 4.0),
-                                child: Text(
-                                  post['title'],
-                                  style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
-                                  textAlign: TextAlign.left,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              // Teaser
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 8.0),
-                                child: Text(
-                                  post['teaser'],
-                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey[700]),
-                                  maxLines: 3,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-
-                              // Date and read time with calendar icon
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
-                                child: Row(
-                                  children: [
-                                    const Icon(Icons.calendar_today_outlined, size: 14, color: Colors.grey),
-                                    
-                                    const SizedBox(width: 4),
-                                    Text(
-                                      '${post['date']} • ${post['readTime']}',
-                                      style: const TextStyle(color: Colors.grey, fontSize: 12),
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: w(context),
+                              maxHeight: MediaQuery.of(context).size.width >= 800
+                                  ? MediaQuery.of(context).size.height * 0.75
+                                  : MediaQuery.of(context).size.width * 0.85,
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                            
+                                if (post['image'] != null)
+                                  ClipRRect(
+                                    borderRadius: const BorderRadius.vertical(top: Radius.circular(15.0)), 
+                                    child: Image.network(
+                                      post['image'],
+                                      fit: BoxFit.cover,
+                                      width: double.infinity,
+                                      height: MediaQuery.of(context).size.width > 800 ? MediaQuery.of(context).size.width * 0.25 : MediaQuery.of(context).size.width * 0.45
                                     ),
-
-                                  ],
+                                  ),
+                            
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 4.0),
+                                  child: Text(
+                                    post['title'],
+                                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                                    textAlign: TextAlign.left,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ),
-                              ),
-                            ],
+                            
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 8.0),
+                                  child: Text(
+                                    post['teaser'],
+                                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.grey[700]),
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                            
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.calendar_today_outlined, size: 14, color: Colors.grey),
+                                      SizedBox(width: 4),
+                                      Text(
+                                        '${post['date']} • ${post['readTime']}',
+                                        style: TextStyle(color: Colors.grey, fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -218,10 +186,42 @@ class _HomepageState extends State<Homepage> {
                   }).toList(),
                 ),
               ),
+
+
+
             ],
           ),
         ),
       ),
     );
   }
+
+
+
+  double w(BuildContext context) {
+
+    if(MediaQuery.of(context).size.width <= 500) {
+      return MediaQuery.of(context).size.width;
+    
+    } else 
+    if(MediaQuery.of(context).size.width <= 800 && MediaQuery.of(context).size.width > 500) {
+      return MediaQuery.of(context).size.width;
+    
+    } else 
+    if (MediaQuery.of(context).size.width <= 900 && MediaQuery.of(context).size.width > 800) {
+      return MediaQuery.of(context).size.width * 0.4;
+    
+    } else 
+    if(MediaQuery.of(context).size.width <= 1200 && MediaQuery.of(context).size.width > 900) {
+      return MediaQuery.of(context).size.width * 0.43;
+    
+    } else 
+    if(MediaQuery.of(context).size.width > 1200) {
+      return MediaQuery.of(context).size.width * 0.29;
+    
+    } return MediaQuery.of(context).size.width * 0.24;
+  }
+
+
+
 }
