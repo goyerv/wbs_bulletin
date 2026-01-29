@@ -32,10 +32,66 @@ class _HomepageState extends State<Homepage> {
     'Behind the Scenes': Colors.blue, // Fixed capitalization for consistency
     'Economic Impact & Access': Colors.purple,
     'Vision & Philosophy': Colors.orange,
+    'Current Affairs': Colors.redAccent,
   };
 
   // List of posts for easier management (add more deets here if you want)
   final List<Map<String, dynamic>> posts = [
+    
+    // Sept, Oct, Nov., Dec
+    {
+      'category': 'Current Affairs',
+      'title': 'Governments Begin Scrutinizing Peer-to-Peer Logistics Networks',
+      'image': 'https://bulletin.goyerv.com/articles/nasser-eledroos-20fmGtxKs_I-unsplash.jpg',
+      'teaser': 'Authorities examine these networks for compliance with labor laws, taxation, insurance, and data privacy, signaling that the era of lightly regulated, decentralized logistics is shifting toward oversight',
+      'date': 'December 22, 2025',
+      'readTime': '2 min read',
+      'route': '/articles/current-affairs/governments-begin-scrutinizing-logistics-networks',
+    },
+
+    {
+      'category': 'Current Affairs',
+      'title': 'Schengen’s New Entry System: What Changed for Non-EU Travelers Late This Year',
+      'image': 'https://bulletin.goyerv.com/articles/dennis-rochel-FpNlPdPn2Ws-unsplash.jpg',
+      'teaser': 'The broader trend reflects Europe’s intent to combine security with efficiency. By shifting from reactive manual checks to pre-emptive digital verification, authorities aim to streamline flows while minimizing risk.',
+      'date': 'November 8, 2025',
+      'readTime': '2 min read',
+      'route': '/articles/current-affairs/schengen-new-entry-system',
+    },
+
+    {
+      'category': 'Current Affairs',
+      'title': 'TSA’s 2025 Enforcement Changes: What Travelers Are Being Stopped for Now',
+      'image': 'https://bulletin.goyerv.com/articles/patty-zavala-TKwGZ9a6YHU-unsplash.jpg',
+      'teaser': 'TSA expands the use of automated screening lanes and advanced imaging systems, reducing reliance on individual officer discretion.',
+      'date': 'October 28, 2025',
+      'readTime': '2 min read',
+      'route': '/articles/current-affairs/tsa-enforcement-changes',
+    },
+
+    {
+      'category': 'Economic Impact & Access',
+      'title': 'Side Hustle to Main Hustle: How Goyerv Is Unlocking Micro-Incomes',
+      'image': 'https://bulletin.goyerv.com/articles/thrift-shopping.jpg',
+      'teaser': 'Micro-businesses and local retailers gain access to affordable logistics without committing to permanent delivery staff.',
+      'date': 'October 20, 2025',
+      'readTime': '4 min read',
+      'route': '/articles/economic-impact-and-access/side-hustle-to-main-hustle',
+    },
+
+    {
+      'category': 'Current Affairs',
+      'title': 'How Europe’s Platform Work Directive Redefined Gig Work in 2025',
+      'image': 'https://bulletin.goyerv.com/articles/christian-lue-8Yw6tsB8tnc-unsplash.jpg',
+      'teaser': 'In the second half of last year, the European Union advanced the Platform Work Directive, marking a decisive shift in how gig work is regulated across member states.',
+      'date': 'September 1, 2025',
+      'readTime': '4 min read',
+      'route': '/articles/current-affairs/europe-platform-work-directive',
+    },
+
+
+
+    // ################################
     {
       'category': 'Sustainability & Innovation',
       'title': 'Goyerv is Green',
@@ -72,6 +128,7 @@ class _HomepageState extends State<Homepage> {
       'readTime': '4 min read',
       'route': '/articles/vision-and-philosophy/the-rise-of-peer-logistics',
     },
+
     {
       'category': 'Vision & Philosophy',
       'title': 'We’re Not a Delivery App—We’re a Movement',
@@ -81,7 +138,10 @@ class _HomepageState extends State<Homepage> {
       'readTime': '3 min read',
       'route': '/articles/vision-and-philosophy/we-are-a-movement',
     },
+
   ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -123,8 +183,8 @@ class _HomepageState extends State<Homepage> {
                             constraints: BoxConstraints(
                               maxWidth: w(context),
                               maxHeight: MediaQuery.of(context).size.width >= 800
-                                  ? MediaQuery.of(context).size.height * 0.75
-                                  : MediaQuery.of(context).size.width * 0.85,
+                                  ? MediaQuery.of(context).size.height * 0.78
+                                  : MediaQuery.of(context).size.width * 0.88,
                             ),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
@@ -167,12 +227,16 @@ class _HomepageState extends State<Homepage> {
                                   padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
                                   child: Row(
                                     children: [
-                                      Icon(Icons.calendar_today_outlined, size: 14, color: Colors.grey),
-                                      SizedBox(width: 4),
+
+                                      const Icon(Icons.calendar_today_outlined, size: 14, color: Colors.grey),
+                                      
+                                      const SizedBox(width: 4),
+
                                       Text(
                                         '${post['date']} • ${post['readTime']}',
-                                        style: TextStyle(color: Colors.grey, fontSize: 12),
+                                        style: const TextStyle(color: Colors.grey, fontSize: 12),
                                       ),
+
                                     ],
                                   ),
                                 ),
