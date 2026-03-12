@@ -183,7 +183,7 @@ class _HomepageState extends State<Homepage> {
                             constraints: BoxConstraints(
                               maxWidth: w(context),
                               maxHeight: MediaQuery.of(context).size.width >= 800
-                                  ? MediaQuery.of(context).size.height * 0.78
+                                  ? MediaQuery.of(context).size.height * 0.82
                                   : MediaQuery.of(context).size.width * 0.88,
                             ),
                             child: Column(
